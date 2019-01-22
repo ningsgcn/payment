@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.4">
+  <servlet>
+    <servlet-name>PayRequestServlet</servlet-name>
+    <servlet-class>cn.itcast.web.servlet.PayRequestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryRequestServlet</servlet-name>
+    <servlet-class>cn.itcast.web.servlet.QueryRequestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PaymentResponse</servlet-name>
+    <servlet-class>cn.itcast.web.servlet.PaymentResponse</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryResponse</servlet-name>
+    <servlet-class>cn.itcast.web.servlet.QueryResponse</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HrefResponse</servlet-name>
+    <servlet-class>cn.itcast.web.servlet.HrefResponse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayRequestServlet</servlet-name>
+    <url-pattern>/servlet/PayRequestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryRequestServlet</servlet-name>
+    <url-pattern>/servlet/QueryRequestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PaymentResponse</servlet-name>
+    <url-pattern>/servlet/PaymentResponse</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryResponse</servlet-name>
+    <url-pattern>/servlet/QueryResponse</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HrefResponse</servlet-name>
+    <url-pattern>/servlet/HrefResponse</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
