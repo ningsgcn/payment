@@ -50,7 +50,7 @@ public class QueryRequestServlet extends HttpServlet {
 		url += "&orderid="+orderid;
 		url += "&sign="+sign;
 		/**
-		 * 是所有Spring提供的api实现get请求并获取返回数据
+		 * 使用Spring提供的api实现get请求并获取返回数据
 		 */
 //		RestTemplate rest = new RestTemplate();
 //		ResponseEntity<String> result = rest.getForEntity(url, String.class, new Object[1]);
