@@ -1,6 +1,8 @@
 package cn.itcast.web.servlet;
 
+
 import java.io.IOException;
+
 import java.util.Map;
 
 import javax.servlet.FilterChain;
@@ -47,14 +49,29 @@ public class QueryRequestServlet extends HttpServlet {
 		url += "?parter="+parter;
 		url += "&orderid="+orderid;
 		url += "&sign="+sign;
-		RestTemplate rest = new RestTemplate();
-		ResponseEntity<String> result = rest.getForEntity(url, String.class, new Object[1]);
-		String jsonStr = result.getBody();// {"orderid":"1548054890909","opstate":0,"ovalue":1.00,"sysorderid":"B5600158806127724188"}
-		System.out.println("jsonStr: "+jsonStr);
-		Map map = (Map)JSON.parse(jsonStr);
+		/**
+		 * 是所有Spring提供的api实现get请求并获取返回数据
+		 */
+//		RestTemplate rest = new RestTemplate();
+//		ResponseEntity<String> result = rest.getForEntity(url, String.class, new Object[1]);
+//		String jsonStr = result.getBody();// {"orderid":"1548054890909","opstate":0,"ovalue":1.00,"sysorderid":"B5600158806127724188"}
+//		System.out.println("jsonStr: "+jsonStr);
+//		Map map = (Map)JSON.parse(jsonStr);
+//		Integer i = (Integer) map.get("opstate");//opstate为0则说明订单支付成功.
+//		System.out.println("i = " + i);
+
+		/**
+		 * 调用jdk自带api写的get请求发送方法
+		 */
+		String str = PaymentUtil.request(url);
+		System.out.println("str: "+str);
+		Map map = (Map)JSON.parse(str);
 		Integer i = (Integer) map.get("opstate");//opstate为0则说明订单支付成功.
 		System.out.println("i = " + i);
+
 	}
+
+
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

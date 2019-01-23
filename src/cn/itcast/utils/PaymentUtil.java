@@ -1,10 +1,18 @@
 package cn.itcast.utils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -220,6 +228,39 @@ public class PaymentUtil {
 		}else {
 			return ip;
 		}		
+	}
+
+	/**
+	 * 使用jdk自带的api实现get请求并获取返回数据
+	 * @param httpUrl
+	 * @return
+	 */
+	public static String request(String httpUrl) {
+
+		BufferedReader reader = null;
+		String result = null;
+		StringBuffer sbf = new StringBuffer();
+		try {
+			URL url = new URL(httpUrl);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			connection.connect();
+			InputStream is = connection.getInputStream();
+			reader = new BufferedReader(new InputStreamReader(is, "GB2312"));
+			String strRead = reader.readLine();
+			if (strRead != null) {
+				sbf.append(strRead);
+				while ((strRead = reader.readLine()) != null) {
+					sbf.append("\n");
+					sbf.append(strRead);
+				}
+			}
+			reader.close();
+			result = sbf.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	public static void main(String[] args) {
